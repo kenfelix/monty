@@ -1,5 +1,5 @@
 #ifndef MONTY_H
-#define MONTY-H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,5 +37,13 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+extern stack_t *stack;
+
+void push(stack_t **stac, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+int check_string(char *s);
+stack_t *add_dnodeint(stack_t **head, const int n);
+size_t print_dlistint(const stack_t *h);
 
 #endif

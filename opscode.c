@@ -10,19 +10,17 @@
  * then, locate stack beased on the order of input arguements
  * Return: Nothing.
  */
-
 void push(stack_t **stack, unsigned int line_number)
 {
-	register int num;
-	char *params = strtok(NULL, "\n");
+	int num;
 
-	if (check_string(params) == -1)
+	if (tokens[1] == NULL || is_alpha(tokens[1]))
 	{
-		fprintf(stderr, "L%u: usage push integer \n", line_number);
-		free(params);
+		fprintf(stderr, "L<%d>: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(params);
+
+	num = atoi(tokens[1]);
 	add_dnodeint(stack, num);
 }
 
@@ -33,7 +31,6 @@ void push(stack_t **stack, unsigned int line_number)
  *
  * Return: Nothing.
  */
-
 void pall(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;

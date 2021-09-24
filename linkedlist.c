@@ -20,11 +20,11 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	new_node->n = n;
 	new_node->prev = NULL;
 	new_node->next = *head;
+
 	if (*head)
-	{
 		(*head)->prev = new_node;
-	}
 	*head = new_node;
+
 	return (new_node);
 }
 
@@ -33,7 +33,6 @@ stack_t *add_dnodeint(stack_t **head, const int n)
  * @h: doubly linked list
  * Return: Size of linked list
  */
-
 size_t print_dlistint(const stack_t *h)
 {
 	size_t character = 0;

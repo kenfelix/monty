@@ -12,13 +12,15 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int num = atoi(tokens[1]);
+	int num;
 
-	if (tokens[1] == NULL || num == 0)
+	if (tokens[1] == NULL || is_alpha(tokens[1]))
 	{
 		fprintf(stderr, "L<%d>: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	num = atoi(tokens[1]);
 	add_dnodeint(stack, num);
 }
 

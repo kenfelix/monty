@@ -8,14 +8,14 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
 
-	repl_file(argv[1]);
-	exit(EXIT_FAILURE);
+    repl_file(argv[1]);
+    exit(EXIT_FAILURE);
 }
 
 /**
@@ -25,17 +25,17 @@ int main(int argc, char *argv[])
  */
 int check_file_extension(char *filename)
 {
-	int n;
+    int n;
 
-	if (filename == NULL)
-	{
-		fprintf(stderr, "No file name given.\n");
-		exit(EXIT_FAILURE);
-	}
+    if (filename == NULL)
+    {
+        fprintf(stderr, "No file name given.\n");
+        exit(EXIT_FAILURE);
+    }
 
-	n = strlen(filename) - 2;
+    n = strlen(filename) - 2;
 
-	return ((strcmp(filename + n, ".m") == 0) ? 1 : 0);
+    return ((strcmp(filename + n, ".m") == 0) ? 1 : 0);
 }
 
 /**
@@ -45,29 +45,29 @@ int check_file_extension(char *filename)
  */
 int execute_ins(unsigned int line_num)
 {
-	int i = 0;
-	instruction_t ins_sets[] = {
-		{"push", push},
-		{"pall", pall},
-		{NULL, NULL},
-	};
+    int i = 0;
+    instruction_t ins_sets[] = {
+        {"push", push},
+        {"pall", pall},
+        {NULL, NULL},
+    };
 
-	while (ins_sets[i].opcode)
-	{
-		if (strcmp(tokens[0], ins_sets[i].opcode) == 0)
-		{
-			ins_sets[i].f(&stack, line_num);
-			return (0);
-		}
-		i++;
-	}
+    while (ins_sets[i].opcode)
+    {
+        if (strcmp(tokens[0], ins_sets[i].opcode) == 0)
+        {
+            ins_sets[i].f(&stack, line_num);
+            return (0);
+        }
+        i++;
+    }
 
-	if (ins_sets[i].opcode == NULL)
-	{
-		fprintf(stderr, "L<%d>: unknown instruction <%s>",
-				line_num, tokens[0]);
-		free(tokens);
-	}
+    if (ins_sets[i].opcode == NULL)
+    {
+        fprintf(stderr, "L<%d>: unknown instruction <%s>",
+                line_num, tokens[0]);
+        free(tokens);
+    }
 
-	exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);
 }

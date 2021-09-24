@@ -61,5 +61,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 int execute_ins(unsigned int line_num);
 void repl_file(char *filename);
+int is_alpha(char *str);
 
 #endif

@@ -1,11 +1,17 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
+/* Header Files */
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
+#include <errno.h>
+#include <sys/types.h>
 
+/* Macros */
+#define BUFSIZE 80
+
+/* Data Structures */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -15,12 +21,11 @@
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
-
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -31,19 +36,30 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
-
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *stack;
+/* Global Variable */
+#ifdef DEFINE_VARIABLES
+#define EXTERN
+#else
+#define EXTERN extern
+#endif
+EXTERN char **tokens;
+EXTERN stack_t *stack;
 
-void push(stack_t **stac, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-int check_string(char *s);
+/* My Functions Prototypes */
+char *read_line(FILE *stream, long pos);
+int check_file_extension(char *filename);
+char **tokenize_line(char *);
 stack_t *add_dnodeint(stack_t **head, const int n);
 size_t print_dlistint(const stack_t *h);
+void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+int execute_ins(unsigned int line_num);
+void repl_file(char *filename);
 
 #endif

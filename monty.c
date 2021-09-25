@@ -64,7 +64,7 @@ int execute_ins(unsigned int line_num)
 
     if (ins_sets[i].opcode == NULL)
     {
-        fprintf(stderr, "L<%d>: unknown instruction <%s>",
+        fprintf(stderr, "L%d: unknown instruction %s",
                 line_num, tokens[0]);
         free(tokens);
     }

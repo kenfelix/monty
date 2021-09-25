@@ -16,10 +16,11 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (tokens[1] == NULL || is_alpha(tokens[1]))
 	{
-		fprintf(stderr, "L<%d>: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 
+	printf("%s %s", tokens[0], tokens[1]);
 	num = atoi(tokens[1]);
 	add_dnodeint(stack, num);
 }

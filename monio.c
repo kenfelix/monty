@@ -21,7 +21,7 @@ char **tokenize_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((tok = __strtok_r(line, " \t\n", &line)))
+	while ((tok = __strtok_r(line, "\t\n ", &line)))
 	{
 		ins_arr[i] = tok;
 		i++;
@@ -44,16 +44,16 @@ void repl_file(char *filename)
 	fileStream = fopen(filename, "r");
 	if (fileStream == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file <%s>\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
-	if (!check_file_extension(filename))
+	/*if (!check_file_extension(filename))
 	{
 		fprintf(stderr, "Error: Invalid file extension\n");
         fclose(fileStream);
 		exit(EXIT_FAILURE);
-	}
+	}*/
 
 	line = malloc(sizeof(char) * BUFSIZE);
 	if (line == NULL)

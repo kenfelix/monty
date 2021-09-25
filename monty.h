@@ -62,5 +62,7 @@ void push(stack_t **stack, unsigned int line_number);
 int execute_ins(unsigned int line_num);
 void repl_file(char *filename);
 int is_alpha(char *str);
+void pint(stack_t **stack, unsigned int line_number);
+void print_top(const stack_t *h);
 
 #endif

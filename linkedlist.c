@@ -45,3 +45,17 @@ size_t print_dlistint(const stack_t *h)
 	}
 	return (character);
 }
+
+/**
+ * print_top - print the top of the stack
+ * @h: the top of the stack
+ * 
+ * Return: nothing
+ */
+void print_top(const stack_t *h)
+{
+	if (h == NULL)
+		return;
+	
+	printf("%d\n", h->n);
+}

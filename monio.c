@@ -41,7 +41,7 @@ void repl_file(char *filename)
 	FILE *fileStream;
 	char *line = NULL;
 
-	fileStream = fopen(filename, "r");
+ 	fileStream = fopen(filename, "r");
 	if (fileStream == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);

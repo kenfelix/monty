@@ -20,7 +20,6 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%s %s", tokens[0], tokens[1]);
 	num = atoi(tokens[1]);
 	add_dnodeint(stack, num);
 }
